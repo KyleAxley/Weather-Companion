@@ -4,38 +4,25 @@ $(document).ready(function () {
     const apiKey = 'd96eaa93b402b86cc39119d34076f8b0';
 
     // Selectors for HTML elements to display weather information
-    const cityEl = $('h2#city');
-    const dateEl = $('h3#date');
-    const weatherIconEl = $('img#weather-icon');
-    const temperatureEl = $('span#temperature');
-    const humidityEl = $('span#humidity');
-    const windEl = $('span#wind');
-    const uvIndexEl = $('span#uv-index');
-    const cityListEl = $('div.cityList');
+    var cityEl = $('h2#city');
+    var dateEl = $('h3#date');
+    var weatherIconEl = $('img#weather-icon');
+    var temperatureEl = $('span#temperature');
+    var humidityEl = $('span#humidity');
+    var windEl = $('span#wind');
+    var uvIndexEl = $('span#uv-index');
+    var cityListEl = $('div.cityList');
 
    // Selectors for form elements
-   const cityInput = $('#city-input');
+   var cityInput = $('#city-input');
 
    // Store past searched cities
    let pastCities = [];
 
-   function compare(a, b) {
-    // Use toUpperCase() to ignore character casing
-    const cityA = a.city.toUpperCase();
-    const cityB = b.city.toUpperCase();
-
-    let comparison = 0;
-    if (cityA > cityB) {
-        comparison = 1;
-    } else if (cityA < cityB) {
-        comparison = -1;
-    }
-    return comparison;
-}
 
     // Load events from local storage
     function loadCities() {
-        const storedCities = JSON.parse(localStorage.getItem('pastCities'));
+        var storedCities = JSON.parse(localStorage.getItem('pastCities'));
         if (storedCities) {
             pastCities = storedCities;
         }
@@ -63,7 +50,7 @@ $(document).ready(function () {
         cityListEl.empty();
         pastCities.splice(5);
         let sortedCities = [...pastCities];
-        sortedCities.sort(compare);
+        //sortedCities.sort(compare);
         sortedCities.forEach(function (location) {
             let cityDiv = $('<div>').addClass('col-12 city');
             let cityBtn = $('<button>').addClass('btn btn-light city-btn').text(location.city);
@@ -148,17 +135,16 @@ $(document).ready(function () {
     $('#search-btn').on('click', function (event) {
         // Preventing the button from trying to submit the form
         event.preventDefault();
-
-        // Retrieving and scrubbing the city from the inputs
         let city = cityInput.val().trim();
         city = city.replace(' ', '%20');
-
-        // Clear the input fields
         cityInput.val('');
 
         // Build the query url with the city and searchWeather
         if (city) {
             let queryURL = buildURLFromInputs(city);
+            searchWeather(queryURL);
+        } else {
+            let queryURL = buildURLFromInputs("cleveland");
             searchWeather(queryURL);
         }
     }); 
@@ -173,11 +159,9 @@ $(document).ready(function () {
         searchWeather(queryURL);
     });
 
-
-
     loadCities();
     displayCities(pastCities);
 
-    //displayLastSearchedCity();
+    displayLastSearchedCity();
 
 });

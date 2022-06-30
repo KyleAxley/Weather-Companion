@@ -21,12 +21,6 @@ main.dashboard {
   }
 
 
-div.fiveDay p.card-title {
-    font-weight: bold;
-    color: white;
-    font-size: larger;
-}
-
 div.fiveDay p {
     font-size: 1.5rem;
   }
