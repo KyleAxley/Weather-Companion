@@ -1,3 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Nova+Square&display=swap');
+
+body {
+    font-family: 'Nova Square', cursive, sans-serif;
+}
+
 header {
     background: linear-gradient(
         rgb(2, 37, 32) 20%,
@@ -14,6 +20,7 @@ main.dashboard {
     background-color: rgb(195, 228, 220);
   }
 
+
 div.fiveDay p.card-title {
     font-weight: bold;
     color: white;
@@ -21,7 +28,7 @@ div.fiveDay p.card-title {
 }
 
 div.fiveDay p {
-    font-size: 1rem;
+    font-size: 1.5rem;
   }
 
 .card {
