@@ -26,7 +26,7 @@ $(document).ready(function () {
     }
     let pastCities = [];
 
-   // Functions to build the URL for the OpenWeather API call
+   // Functions for the OpenWeather API call
     function openWeatherInput(city) {
         if (city) {
             return `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`;
@@ -94,7 +94,7 @@ $(document).ready(function () {
                 uvIndexEl.attr('style', `background-color: ${uvColor}; color: ${uvColor === "yellow" ? "black" : "white"}`);
                 let fiveDay = response.daily;
                 
-                // Display 5 day forecast in DOM elements
+                // For loop to Display the 5 day forecast in the HTML/DOM
                 for (let i = 0; i <= 5; i++) {
                     let currDay = fiveDay[i];
                     $(`div.day-${i} .card-title`).text(moment.unix(currDay.dt).format('L'));
@@ -128,7 +128,7 @@ $(document).ready(function () {
             city = city.replace(' ', '%20');
             cityInput.val('');
             
-            //generate the city and weather query with default set to my gome city "cleveland"
+            //generate the city and weather query with default set to my home city "cleveland"
             if (city) {
                 let queryURL = openWeatherInput(city);
                 searchWeather(queryURL);
@@ -151,6 +151,6 @@ $(document).ready(function () {
         loadCities();
         displayCities(pastCities);
         
-    displayLastSearchedCity();
-
-});
+        
+    });
+    //displayLastSearchedCity();

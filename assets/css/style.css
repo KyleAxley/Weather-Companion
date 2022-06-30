@@ -20,6 +20,15 @@ main.dashboard {
     background-color: rgb(195, 228, 220);
   }
 
+.currentWeather {
+    background-color: rgb(156, 224, 207);
+    border-radius: 2%;
+}
+
+.city-search {
+    font-size: x-large;
+    text-align: center;
+}
 
 div.fiveDay p {
     font-size: 1.5rem;
