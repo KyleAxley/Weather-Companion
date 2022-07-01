@@ -151,6 +151,5 @@ $(document).ready(function () {
         loadCities();
         displayCities(pastCities);
         
-        
     });
-    //displayLastSearchedCity();
+  
